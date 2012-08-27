@@ -1,0 +1,505 @@
+1-
+abhinav@abhinav-HP-ProBook-4530s:~$ cd Documents
+abhinav@abhinav-HP-ProBook-4530s:~/Documents$ mkdir git-exercise
+abhinav@abhinav-HP-ProBook-4530s:~/Documents$ cd git-exercise
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git init
+Initialized empty Git repository in /home/abhinav/Documents/git-exercise/.git/
+
+2,3-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m"test commited"
+[master f30553d] test commited
+ Committer: Abhinav Srivastav <abhinav@abhinav-HP-ProBook-4530s.(none)>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+
+4-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test1
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test2
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m"other test doc commited"
+[master 3506766] other test doc commited
+ Committer: Abhinav Srivastav <abhinav@abhinav-HP-ProBook-4530s.(none)>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 12 deletions(-)
+
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test~
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git rm test~
+error: 'test~' has changes staged in the index
+(use --cached to keep the file, or -f to force removal)
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git rm -f test~
+rm 'test~'
+
+
+5-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   test1
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test1~
+#	test2~
+no changes added to commit (use "git add" and/or "git commit -a")
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git checkout test1
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git status
+# On branch master
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test1~
+#	test2~
+nothing added to commit but untracked files present (use "git add" to track)
+
+6-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test2
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   test2
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test1~
+#	test2~
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git reset HEAD test2
+Unstaged changes after reset:
+M	test2
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   test2
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test1~
+#	test2~
+no changes added to commit (use "git add" and/or "git commit -a")
+
+7-
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m"will be reverted after commit"
+[master e8842e0] will be reverted after commit
+ Committer: Abhinav Srivastav <abhinav@abhinav-HP-ProBook-4530s.(none)>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git revert HEAD
+Use "fg" to return to nano.
+
+[11]+  Stopped                 git revert HEAD
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   test
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   test2
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test1~
+#	test2~
+#	test~
+
+8-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   test
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   test1
+#	modified:   test2
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test1~
+#	test2~
+#	test~
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test1
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   test
+#	modified:   test1
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   test2
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test1~
+#	test2~
+#	test~
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m "commiting test1"
+[master 6ca87e7] commiting test1
+ Committer: Abhinav Srivastav <abhinav@abhinav-HP-ProBook-4530s.(none)>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   test2
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test1~
+#	test2~
+#	test~
+no changes added to commit (use "git add" and/or "git commit -a")
+
+9-
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git log --pretty=format:'%h %ad | %s%d [%an]'
+6ca87e7 Mon Aug 27 19:08:26 2012 +0530 | commiting test1 (HEAD, master) [Abhinav Srivastav]
+e8842e0 Mon Aug 27 19:04:12 2012 +0530 | will be reverted after commit [Abhinav Srivastav]
+3506766 Mon Aug 27 18:55:51 2012 +0530 | other test doc commited [Abhinav Srivastav]
+f30553d Mon Aug 27 18:54:58 2012 +0530 | test commited [Abhinav Srivastav]
+eb0ce9a Mon Aug 27 18:49:28 2012 +0530 | test commited [Abhinav Srivastav]
+38bd8c3 Mon Aug 27 18:26:06 2012 +0530 | adding changes by master branch [Abhinav Srivastav]
+f5b6339 Mon Aug 27 18:23:17 2012 +0530 | adding changes by master branch [Abhinav Srivastav]
+028eaf2 Mon Aug 27 18:18:11 2012 +0530 | commiting test2 for feature1 (feature1) [Abhinav Srivastav]
+6ee0cf9 Mon Aug 27 17:46:03 2012 +0530 | Revert "test2 commited to be only deleted" [Abhinav Srivastav]
+3343b5a Mon Aug 27 17:44:48 2012 +0530 | test2 commited to be only deleted [Abhinav Srivastav]
+dabb73e Mon Aug 27 17:28:53 2012 +0530 | test2 commited [Abhinav Srivastav]
+
+10-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git show 6ca87e7
+commit 6ca87e7c888436f0174130b7eb04c05e3690e4c7
+Author: Abhinav Srivastav <abhinav@abhinav-HP-ProBook-4530s.(none)>
+Date:   Mon Aug 27 19:08:26 2012 +0530
+
+    commiting test1
+
+diff --git a/test b/test
+index 94f2aa1..d014168 100644
+--- a/test
++++ b/test
+@@ -1,3 +1 @@
+ this is test
+-
+-after commit
+diff --git a/test1 b/test1
+index 49a7eca..f395810 100644
+--- a/test1
++++ b/test1
+@@ -1 +1,3 @@
+ this is test 1
++
++new test for status
+
+
+11-
+
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git branch feature1
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git branch feature2
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git branch
+  feature1
+  feature2
+* master
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git branch -d feature2
+
+12-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git checkout feature1
+Switched to branch 'feature1'
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test2
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m"commit for feature1"
+# On branch feature1
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test1~
+#	test2~
+nothing added to commit but untracked files present (use "git add" to track)
+
+13-
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git checkout master
+Switched to branch 'master'
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test1
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m"commit for master"
+# On branch master
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test1~
+#	test2~
+nothing added to commit but untracked files present (use "git add" to track)
+
+14-
+
+ git merge feature1
+Updating 6ee0cf9..028eaf2
+error: Your local changes to the following files would be overwritten by merge:
+	test2
+Please, commit your changes or stash them before you can merge.
+Aborting
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test1
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test2
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m"adding changes by master branch"
+[master f5b6339] adding changes by master branch
+ Committer: Abhinav Srivastav <abhinav@abhinav-HP-ProBook-4530s.(none)>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+15-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git branch feature2
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git checkout feature2
+Switched to branch 'feature2'
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test-feature2
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m"commit for test-feature2"
+[feature2 1f9a02f] commit for test-feature2
+ Committer: Abhinav Srivastav <abhinav@abhinav-HP-ProBook-4530s.(none)>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test-feature2
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m"commit for test"
+# On branch feature2
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   test2
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test-feature2~
+#	test1~
+#	test2~
+#	test~
+no changes added to commit (use "git add" and/or "git commit -a")
+
+16-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git checkout master
+M	test2
+Switched to branch 'master'
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m"commit for test in master"
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   test2
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	test-feature2~
+#	test1~
+#	test2~
+#	test~
+no changes added to commit (use "git add" and/or "git commit -a")
+
+17-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git rebase feature2
+Cannot rebase: You have unstaged changes.
+Please commit or stash them.
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add test2
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m"commit for test in master"
+[master fa933f4] commit for test in master
+ Committer: Abhinav Srivastav <abhinav@abhinav-HP-ProBook-4530s.(none)>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git rebase feature2
+First, rewinding head to replay your work on top of it...
+Applying: commit for test in master
+
+
+18-
+
+The final result of the rebase is very similar to the merge. The greet branch now contains all of its changes, as well as all the changes from the master branch. However, the commit tree is quite different. The commit tree for the greet branch has been rewritten so that the master branch is a part of the commit history. This leaves the chain of commits linear and much easier to read.
+
+19-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git branch stash-check
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add stash-chk
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ cat<<stash-chk
+> now adding some text
+> ^C
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ cat stash-chk
+ 
+added something
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git stash
+Saved working directory and index state WIP on master: 76faf67 commit for test in master
+HEAD is now at 76faf67 commit for test in master
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git status
+# On branch master
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	stash-chk~
+#	test-feature2~
+#	test1~
+#	test2~
+#	test~
+nothing added to commit but untracked files present (use "git add" to track)
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git stash apply
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   stash-chk
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	stash-chk~
+#	test-feature2~
+#	test1~
+#	test2~
+#	test~
+
+20-
+
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git init
+Reinitialized existing Git repository in /home/abhinav/Documents/git-exercise/.git/
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git add to-repo
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git commit -m "commiting"
+[master 4a075ac] commiting
+ Committer: Abhinav Srivastav <abhinav@abhinav-HP-ProBook-4530s.(none)>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100644 to-repo
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git remote add origin https://github.com/abhinav-srivastav/git-exercise.git
+abhinav@abhinav-HP-ProBook-4530s:~/Documents/git-exercise$ git push -u origin master
+To https://github.com/abhinav-srivastav/git-exercise.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+
+
+
